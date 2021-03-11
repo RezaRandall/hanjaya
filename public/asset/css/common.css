@@ -1,0 +1,146 @@
+.containerHeader {
+    background-color : rgb(255, 153, 0);
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 30px;
+    width: 95%;
+    margin: 0 auto;
+  }
+
+.containerListAndSearch{
+    background-color : #FAF9F7;
+    width: 95%;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    padding: 30px;
+    margin: 0 auto
+  }
+
+  .container{
+    background-color : #FAF9F7;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    margin: 0 auto;
+  }
+.containerAdd{
+    background-color: lightgrey;
+    width: 95%;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    padding: 5px;
+    margin: auto;
+  }
+
+.containerListItemMaster{
+    background-color : #FAF9F7;
+    width: 95%;
+    height: auto;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 30px;
+    margin: 0 auto
+}
+
+.table .tbHeader{
+    vertical-align : middle; text-align:center;
+    background-color: rgb(255, 153, 0);
+    border-top: 3px solid black !important;
+    border-bottom: 3px solid black;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+}
+
+.table .tbActionBtn{
+    vertical-align : middle; text-align:center;
+}
+
+.table .tbHeaderRs{
+    vertical-align : middle; text-align:center;
+    background: lightcyan;
+    border-bottom: 3px solid black;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+}
+
+.tbCenter{
+    vertical-align : middle; text-align:center;
+}
+.imageLogoSize{
+    width: 260px;
+    height: 100px;
+    /* cursor:pointer; */
+}
+
+.table .tbHeaderOrder{
+    vertical-align : middle;
+    /* text-align:center; */
+    background-color: rgb(255, 153, 0);
+    border-top: 3px solid black !important;
+    border-bottom: 3px solid black;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+}
+
+  /* Modal Content */
+  .modal-content {
+    position: relative ;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+
+  /* Add Animation */
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+
+  /* The Close Button */
+  .close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+  }
+
+  .modal-body {padding: 2px 16px;}
+
+  .modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+  }
