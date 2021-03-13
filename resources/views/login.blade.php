@@ -47,7 +47,7 @@
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-        <!-- <a href="/register" type="button" class="btn btn-lg btn-primary btn-block">Register</a> -->
+        <a href="/register" type="button" class="btn btn-lg btn-primary btn-block">Register</a>
         <p class="mt-5 mb-3 text-muted">Devloopia&copy; 2020-2021</p>
     </form>
   </body>
