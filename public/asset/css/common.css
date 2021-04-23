@@ -144,3 +144,15 @@
     background-color: #5cb85c;
     color: white;
   }
+
+  .borderNone {
+    border-width:5px;
+    border-style:none !important;
+  }
+
+  .centerTxt{
+      text-align: center;
+      border-width:5px;
+      border-style:none !important;
+    /* border-style:groove !important; */
+  }

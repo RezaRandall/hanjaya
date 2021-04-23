@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ItemMasterController;
 use App\Http\Controllers\OrderProcessController;
+use App\Http\Controllers\ListOrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,38 +52,13 @@ Route::group(['middleware' => 'auth'], function()
     Route::post('orderProcess/storeOrder', [OrderProcessController::class, 'storeOrder'])->name('storeOrder');
 
     // LIST ORDER
-    // get list order items
-    Route::get('listOrderItem', [OrderProcessController::class, 'getListOrder'])->name('getListOrder');
     // pdf
-    Route::get('listOrderItem/print_pdf', [OrderProcessController::class, 'print_pdf'])->name('print_pdf');
-    // search list item
-    Route::post('listOrderItem', [OrderProcessController::class, 'searchListOrder'])->name('searchListOrder');
+    Route::get('listOrderItem/print_pdf', [ListOrderController::class, 'print_pdf'])->name('print_pdf');
+    // search list item by date
+    Route::post('listOrderItem', [ListOrderController::class, 'searchListOrder'])->name('searchListOrder');
+    // item Master
+    Route::get('listOrderItem', [ListOrderController::class, 'getListItemMaster'])->name('getListItemMaster');
+    // Retrieve all data order
+    Route::get('listOrderItem', [ListOrderController::class, 'getAllListOrder'])->name('getAllListOrder');
 
 });
-
-
-// Route::get('login', function(){
-//     if(session()->has('name'))
-//     {
-//         return redirect('itemMaster');
-//     }
-//     return view('login');
-// });
-
-// Route::get('logout', function(){
-//     if(session()->has('name'))
-//     {
-//         session()->pull('name');
-//     }
-//     return redirect('login');
-// });
-
-
-
-// Retrieve data from database item_master 'App\Http\Controllers\ItemMasterController@itemMaster'
-// Route::get('itemMaster', [ItemMasterController::class, 'itemMaster'])->name('itemMaster');
-
-// Route::get('logout',  [AuthController::class, 'getLogout'])->name('logout');
-
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

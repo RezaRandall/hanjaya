@@ -52,16 +52,31 @@ class ItemMasterController extends Controller
     }
 
     public function update(Request $request){
-        DB::table('item_master')->where('item_id', $request -> id)->update([
-            'item_code' => $request -> CodeItem,
-            'item_name' => $request -> NameItem,
-            'item_quantity' => $request -> qtyTotal,
-            'item_uom' => $request -> UomItem,
-            'item_price_agen' => $request -> PriceAgen,
-            'item_price_penyalur' => $request -> PricePenyalur,
-            'item_price_eceran' => $request -> PriceEceran,
-            'log_date_time' => date('Y-m-d H:i:s'),
-        ]);
+        $add = $request -> input('addQty');
+        if($add == null || $add == ""){
+            DB::table('item_master')->where('item_id', $request -> id)->update([
+                'item_code' => $request -> CodeItem,
+                'item_name' => $request -> NameItem,
+                'item_quantity' => $request -> QtyItem,
+                'item_uom' => $request -> UomItem,
+                'item_price_agen' => $request -> PriceAgen,
+                'item_price_penyalur' => $request -> PricePenyalur,
+                'item_price_eceran' => $request -> PriceEceran,
+                'log_date_time' => date('Y-m-d H:i:s'),
+            ]);
+        }else{
+            DB::table('item_master')->where('item_id', $request -> id)->update([
+                'item_code' => $request -> CodeItem,
+                'item_name' => $request -> NameItem,
+                'item_quantity' => $request -> qtyTotal,
+                'item_uom' => $request -> UomItem,
+                'item_price_agen' => $request -> PriceAgen,
+                'item_price_penyalur' => $request -> PricePenyalur,
+                'item_price_eceran' => $request -> PriceEceran,
+                'log_date_time' => date('Y-m-d H:i:s'),
+            ]);
+        }
+
         return redirect('/itemMaster');
     }
 

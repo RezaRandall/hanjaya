@@ -64,7 +64,7 @@
                             <input type="number" class="form-control" id="qtyTotalUpdate" name="QtyItem" value="{{ $edit->item_quantity }}" readonly>
                         </div>
                         <div class="form-group col-md-3">Add
-                            <input type="text" class="form-control" id="addQty">
+                            <input type="text" class="form-control" id="addQty" name="addQty">
                         </div>
                         <div class="form-group col-md-3">Total
                             <input type="number" class="form-control" id="afterAddQtyTotal" name="qtyTotal" readonly >

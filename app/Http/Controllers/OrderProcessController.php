@@ -15,7 +15,7 @@ class OrderProcessController extends Controller
         return view('orderProcess');
     }
 
-    // Get Item Master List
+    // Get Item Master List dropdown
     function getItemMasterList(){
         $itemList = DB::table('item_master')->orderBy('item_name', 'ASC')->get();
         return view('orderProcess', ['listItem' => $itemList]);
@@ -28,14 +28,6 @@ class OrderProcessController extends Controller
                     ->where('item_id', $request->item_id)
                     ->first();
         return response()->json($itemPrice);
-    }
-
-    public function getListOrder(){
-        // get data order
-        $order = Order_item_master_model::all();
-
-        // retrieve data order to view blade lisr order
-        return view('listOrderItem', ['orderList' => $order]);
     }
 
     public function storeOrder(Request $request){
@@ -83,36 +75,6 @@ class OrderProcessController extends Controller
             'log_date_time' => date('Y-m-d H:i:s')
         ]);
         return redirect('orderProcess');
-    }
-
-    public function print_pdf(){
-        $printOrder = order_item_master_model::all();
-
-        $pdf = PDF::loadview('listOrderItem_pdf', ['listOrderItem'=>$printOrder]);
-        return $pdf->stream();
-    }
-
-    // Search list order by date
-    public function searchListOrder(Request $request){
-        $fromDate = $request->input('fromDate');
-        $toDate = $request->input('toDate');
-        $fromDate = date($fromDate);
-        $toDate = date($toDate);
-
-        if($fromDate == null && $toDate == null){
-            // get data order
-            $order = order_item_master_model::all();
-
-            // retrieve data order to view blade lisr order
-            return view('listOrderItem', ['orderList' => $order]);
-        }else{
-            $query = DB::table('order_item_master_model')->select()
-                ->where('log_date_time', '>=', $fromDate)
-                ->where('log_date_time', '<=', $toDate)
-                ->get();
-            // dd($query);
-            return view('listOrderItem', ['orderList'=>$query]);
-        }
     }
 
 }// Controller Close

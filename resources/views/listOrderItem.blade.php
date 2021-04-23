@@ -39,17 +39,32 @@
     </div>
 </div>
 
-<!-- PDF & Search by date -->
 <div class="containerListAndSearch">
     <form action="listOrderItem" method="POST">
-    <!-- {{ csrf_field() }} -->
     @csrf
         <div class="row">
             <div class="col">
-                <a href="/itemMaster" class="btn btn-success btn-sm float-left" type=button >Item Master</a>
+                <a href="/itemMaster" class="btn btn-success btn-sm float-left">Item Master</a>
             </div>
             <div class="col">
-                <a href="/orderProcess" class="btn btn-primary btn-sm float-left" type=button >Make Order</a>
+                <a href="/orderProcess" class="btn btn-primary btn-sm float-right" type=button >Make Order</a>
+            </div>
+        </div>
+    <!-- </form> -->
+</div>
+
+<!-- PDF & Search by date and by name -->
+<div class="containerListAndSearch">
+    <!-- <form action="listOrderItem" method="POST"> -->
+    @csrf
+        <div class="row float-right">
+            <div class="col-md-auto d-flex p-2">
+                <select name="itemFiltered" id="itemFiltered" class="form-control nameItemFilter">
+                    <option value="0" selected="true">All Data</option>
+                    @foreach($data['items'] as $item)
+                    <option value="{{$item->item_id}}">{{$item->item_name}}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="col-md-auto text-right d-flex p-2">
                 Start Date
@@ -93,7 +108,8 @@
                     <th class="tbHeader">Date</th>
                 </tr>
             </thead>
-            @foreach($orderList as $order)
+            <?php $total=0 ?>
+            @foreach($data['orders'] as $order)
             <tbody>
                 <tr>
                     <td class="tbCenter">{{$loop->iteration}}</td>
@@ -107,9 +123,23 @@
                     <td>{{$order->total_price}}</td>
                     <td>{{$order->status}}</td>
                     <td type="date" style="text-align: center;">{{ date('d-m-Y', strtotime($order->log_date_time)) }}</td>
+                    <div style="display: none">{{$total += $order->total_price}}</div>
                 </tr>
             </tbody>
             @endforeach
+            <tfoot>
+                <tr>
+                    <td class="borderNone"></td>
+                    <td class="borderNone"></td>
+                    <td class="borderNone"></td>
+                    <td class="borderNone"></td>
+                    <td class="borderNone"></td>
+                    <td class="borderNone"></td>
+                    <td class="borderNone"></td>
+                    <td class="centerTxt font-weight-bold">Total :</td>
+                    <td class="font-weight-bold">{{$total}}</td>
+                </tr>
+            </tfoot>
         </table>
     </div>
 </div>
