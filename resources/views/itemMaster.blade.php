@@ -39,8 +39,6 @@
 
 <!-- List Order Button and Search -->
 <div class="containerListAndSearch">
-<!-- $user = auth()->User(); -->
-
 <p>Welcome! {{ auth()->user()->name ?? '' }}<br> <a href="/logout">LogOut</a></p>
     <div class="row">
         <div class="col">

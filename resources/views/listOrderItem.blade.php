@@ -119,8 +119,8 @@
                     <td>{{$order->item_name}}</td>
                     <td>{{$order->qty}}</td>
                     <td>{{$order->uom}}</td>
-                    <td>{{$order->item_price}}</td>
-                    <td>{{$order->total_price}}</td>
+                    <td>{{"Rp. ".$order->item_price}}</td>
+                    <td>{{"Rp. ".$order->total_price}}</td>
                     <td>{{$order->status}}</td>
                     <td type="date" style="text-align: center;">{{ date('d-m-Y', strtotime($order->log_date_time)) }}</td>
                     <div style="display: none">{{$total += $order->total_price}}</div>
@@ -137,7 +137,7 @@
                     <td class="borderNone"></td>
                     <td class="borderNone"></td>
                     <td class="centerTxt font-weight-bold">Total :</td>
-                    <td class="font-weight-bold">{{$total}}</td>
+                    <td class="font-weight-bold">{{"Rp. ".$total}}</td>
                 </tr>
             </tfoot>
         </table>
