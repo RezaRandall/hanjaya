@@ -54,13 +54,6 @@ class OrderProcessController extends Controller
         // return $catchPrcItem = $prEceran[1];
         $catchPrcItem = $prEceran[1];
     }
-
-    // $qtyRequest = $request -> qty;
-    // $stockReady = explode("in stock: ", $request -> qtyReady);
-    // $catchQty = '';
-    // if($stockReady[1] <= $qtyRequest){
-    //     $stockReady[1] = 0;
-    // }
             DB::table('order_item_master_model')->insert([
             'product_id' => (int)$extracted[0],
             'customer_name' => $request ->  customerName,
@@ -72,7 +65,7 @@ class OrderProcessController extends Controller
             'item_price' => (int)$catchPrcItem,
             'total_price' => (int)$totalPriceToInt[1],
             'status' => $request -> status,
-            'log_date_time' => date('Y-m-d H:i:s')
+            'log_date_time' => date('Y-m-d')
         ]);
         return redirect('orderProcess');
     }

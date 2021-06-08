@@ -26,11 +26,13 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="text-left">
-                    <img class="imageLogoSize" src="{{ asset('asset/img/sakanato.png') }}" alt="logoHeader">
+                    <a href="/itemMaster">
+                        <img class="imageLogoSize" src="{{ asset('asset/img/ind3.png') }}" alt="logoHeader">
+                    </a>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="text-right" style="margin-top:30px;">
+                <div class="align-middle text-right" style="padding: 15px 20px;">
                     <h2>Order Process</h2>
                 </div>
             </div>
@@ -40,10 +42,10 @@
 <!-- List Orders -->
 <div class="containerListAndSearch">
     <div class="row">
-        <div class="col" style='float: left;'>
+        <div class="col" style='float: left; padding: 0px 0px 0px 25px'>
             <a href="/itemMaster" class="btn btn-success btn-sm float-left" type=button >Item Master</a>
         </div>
-        <div class="col" style='float: right;'>
+        <div class="col" style='float: right; padding: 0px 25px 0px 0px'>
             <a href="/listOrderItem" class="btn btn-success btn-sm text-right" type=button >List Order</a>
         </div>
     </div>

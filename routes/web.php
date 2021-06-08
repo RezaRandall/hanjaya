@@ -1,11 +1,11 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ItemMasterController;
 use App\Http\Controllers\OrderProcessController;
 use App\Http\Controllers\ListOrderController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth'], function()
     // search
     Route::post('itemMaster', [ItemMasterController::class, 'search'])->name('search');
     // pdf
-    Route::get('itemMaster/print_pdf', [ItemMasterController::class, 'print_pdf'])->name('print_pdf');
+    Route::get('itemMaster/print_pdf', [ItemMasterController::class, 'print_pdf'])->name('print_pdf'); //->name('print_pdf')
 
     // ORDER PROCESS
     // Get dropdown item master list

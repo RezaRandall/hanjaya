@@ -1,67 +1,106 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
     <title>List Order PDF</title>
-  </head>
-  <body>
-  <style type="text/css">
-		table tr td,
-		table tr th{
-			font-size: 8pt;
-		}
-	</style>
-  <div class="containerListItemMaster">
-    <div class="card">
-        <div class="card-body">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th class="tbHeader" style="vertical-align : middle; text-align:center;">No</th>
-                        <th class="tbHeader" style="vertical-align : middle; text-align:center;">Customer Name</th>
-                        <th class="tbHeader" style="vertical-align : middle; text-align:center;">Phone</th>
-                        <th class="tbHeader" style="vertical-align : middle; text-align:center;">Address</th>
-                        <th class="tbHeader" style="vertical-align : middle; text-align:center;">Item Name</th>
-                        <th class="tbHeader" style="vertical-align : middle; text-align:center;">Qty</th>
-                        <th class="tbHeader" style="vertical-align : middle; text-align:center;">Uom</th>
-                        <th class="tbHeader" style="vertical-align : middle; text-align:center;">Price</th>
-                        <th class="tbHeader" style="vertical-align : middle; text-align:center;">Total</th>
-                        <th class="tbHeader" style="vertical-align : middle; text-align:center;">Status</th>
-                        <th class="tbHeader" style="vertical-align : middle; text-align:center;">Date</th>
-                    </tr>
-                </thead>
-                @foreach($listOrderItem as $order)
-                <tbody>
-                    <tr>
-                        <td style="vertical-align : middle; text-align:center;">{{$loop->iteration}}</td>
-                        <td>{{ $order->customer_name }}</td>
-                        <td>{{ $order->phone }}</td>
-                        <td>{{ $order->address }}</td>
-                        <td>{{ $order->item_name }}</td>
-                        <td>{{ $order->qty }}</td>
-                        <td>{{ $order->uom }}</td>
-                        <td>{{ $order->item_price }}</td>
-                        <td>{{ $order->total_price }}</td>
-                        <td>{{ $order->status }}</td>
-                        <td style="text-align: center;">{{ date('d-m-Y', strtotime($order->log_date_time)) }}</td>
-                    </tr>
-                </tbody>
-                @endforeach
-            </table>
-        </div>
-    </div>
-  </div>
+</head>
+<body>
+<style>
+    .float-right {
+        font-size: 10px;
+    }
+    #headerCaption {
+        text-align: center;
+        width: 100%;
+    }
+    table { width: 100%;}
+    th {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding:0px;
+        text-align: center;
+        font-size: 10pt;
+    }
+    td {
+        border: 1px solid black;
+        font-size: 10pt;
+    }
+    td.borderNone {
+        border-width: 0px;
+        border-style: none !important;
+    }
+    #tdCenter{
+        text-align: center;
+    }
+    tbody tr td {
+        vertical-align : middle; text-align:center;
+    }
+</style>
+<!-- date -->
+    <p class="float-right">{{date('d/m/Y')}}</p><br>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
+<!-- header caption -->
+    <div class="container">
+        <p id=headerCaption>CV. INDOSIA <br> Stock Item</p>
+    </div>
+<!-- end of header caption -->
+
+<!-- table -->
+<table>
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Item Name</th>
+            <th>Qty</th>
+            <th>Uom</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <?php $total=0 ?>
+    @foreach($listOrderItem as $loi)
+    <tbody>
+        <tr>
+            <td >{{$loop->iteration}}</td>
+            <td>{{ $loi->customer_name }}</td>
+            <td>{{ $loi->phone }}</td>
+            <td>{{ $loi->address }}</td>
+            <td>{{ $loi->item_name }}</td>
+            <td >{{ $loi->qty }}</td>
+            <td>{{ $loi->uom }}</td>
+            <td>{{'Rp. '.$loi->item_price }}</td>
+            <td>{{'Rp. '.$loi->total_price }}</td>
+            <td >{{ $loi->status }}</td>
+            <td style="text-align: center;">{{ date('d/m/Y', strtotime($loi->log_date_time)) }}</td>
+            <div style="display: none">{{$total += $loi->total_price}}</div>
+        </tr>
+    </tbody>
+    @endforeach
+    <tfoot>
+        <tr>
+        <td class="borderNone"></td>
+        <td class="borderNone"></td>
+        <td class="borderNone"></td>
+        <td class="borderNone"></td>
+        <td class="borderNone"></td>
+        <td class="borderNone"></td>
+        <td class="borderNone"></td>
+        <td class="borderNone centerTxt font-weight-bold">Total :</td>
+        <td class="borderNone font-weight-bold">{{'Rp. '.$total}}</td>
+        <td class="borderNone"></td>
+        <td class="borderNone"></td>
+        </tr>
+    </tfoot>
+</table>
+<!-- end of table -->
+</body>
 </html>

@@ -21,7 +21,7 @@
   <body class="text-center">
     <form class="form-signin" method="POST" action="{{ 'register' }}">
      @csrf
-        <img class="imageLogoSize" src="{{ asset('asset/img/sakanato.png') }}" alt="" width="250" height="100">
+        <img class="" src="{{ asset('asset/img/ind3.png') }}" alt="" width="180" height="175">
         <h1 class="h3 mb-3 font-weight-normal">Register {{ config("app.name")}}</h1>
 
         <label for="inputEmail" class="sr-only">Name</label>
@@ -61,6 +61,7 @@
         @endif
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        <a href="/login" type="button" class="btn btn-lg btn-primary btn-block">Login</a>
         <p class="mt-5 mb-3 text-muted">Devloopia&copy; 2020-2021</p>
     </form>
   </body>

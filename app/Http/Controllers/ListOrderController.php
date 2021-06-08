@@ -26,7 +26,7 @@ class ListOrderController extends Controller
         return view('listOrderItem', compact('data'));
     }
 
-     // Search list order by date
+     // Search list order filter by date
      public function searchListOrder(Request $request){
         $fromDate = $request->input('fromDate');
         $toDate = $request->input('toDate');
@@ -34,13 +34,16 @@ class ListOrderController extends Controller
         $toDate = date($toDate);
 
         $itemId = $request->get('itemFiltered');
+        // dd($toDate);
 
+        // all data null
         if( $itemId == "0" && $fromDate == null && $toDate == null){
             $data = array();
             $data['items'] = item_master::all();
-            $data['orders'] = Order_item_master_model::all(); // get data order
+            $data['orders'] = Order_item_master_model::all(); // get all data order
             return view('listOrderItem', compact('data'));  // retrieve data order to view blade list order
 
+        // item null - from date not null - to date not nul
         }if($itemId == "0" && $fromDate != null && $toDate != null){
             $data = array();
             $data['items'] = item_master::all();
@@ -50,6 +53,7 @@ class ListOrderController extends Controller
                 ->get();
                 return view('listOrderItem', compact('data'));
         }
+        // item not null - from date not null - to date not null
         if($itemId != "0" && $fromDate == null && $toDate == null ){
             $data = array();
             $data['items'] = item_master::all();
@@ -58,6 +62,7 @@ class ListOrderController extends Controller
                 ->get();
                 return view('listOrderItem', compact('data'));
         }
+        // item not null - from date not null - to date not null
          if ($itemId != "0" && $fromDate != null && $toDate != null){
             $data = array();
             $data['items'] = item_master::all();
@@ -68,6 +73,23 @@ class ListOrderController extends Controller
                 ->get();
                 return view('listOrderItem', compact('data'));
         }
-
+        // item null - from date null - to date not null
+        if ($itemId == "0" && $fromDate == "" && $toDate != ""){
+            $data = array();
+            $data['items'] = item_master::all();
+            $data['orders'] = Order_item_master_model::select()
+                ->where('log_date_time', '>=', $toDate)
+                ->get();
+            return view('listOrderItem', compact('data'));
+        }
+        // item null - from date not null - to date null
+        if ($itemId == "0" && $fromDate != "" && $toDate == ""){
+            $data = array();
+            $data['items'] = item_master::all();
+            $data['orders'] = Order_item_master_model::select()
+                ->where('log_date_time', '>=', $fromDate)
+                ->get();
+            return view('listOrderItem', compact('data'));
+        }
     }
 }

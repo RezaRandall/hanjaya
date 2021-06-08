@@ -28,11 +28,13 @@
     <div class="row">
         <div class="col-md-6">
             <div class="text-left">
-                <img class="imageLogoSize" src="{{ asset('asset/img/sakanato.png') }}" alt="logoHeader">
+                <a href="/itemMaster">
+                    <img class="imageLogoSize" src="{{ asset('asset/img/ind3.png') }}" alt="logoHeader">
+                </a>
             </div>
         </div>
         <div class="col-md-6">
-            <div class="text-right" style="margin-top:30px;">
+            <div class="align-middle text-right" style="padding: 30px;">
                 <h2>List Order</h2>
             </div>
         </div>
@@ -54,7 +56,7 @@
 </div>
 
 <!-- PDF & Search by date and by name -->
-<div class="containerListAndSearch">
+<div class="containerFilter">
     <!-- <form action="listOrderItem" method="POST"> -->
     @csrf
         <div class="row float-right">
@@ -137,7 +139,7 @@
                     <td class="borderNone"></td>
                     <td class="borderNone"></td>
                     <td class="centerTxt font-weight-bold">Total :</td>
-                    <td class="font-weight-bold">{{"Rp. ".$total}}</td>
+                    <td class="borderNone font-weight-bold">{{"Rp. ".$total}}</td>
                 </tr>
             </tfoot>
         </table>

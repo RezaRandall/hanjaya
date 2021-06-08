@@ -21,7 +21,7 @@
   <body class="text-center">
     <form class="form-signin" method="POST" action="{{ 'login' }}">
      @csrf
-        <img class="imageLogoSize" src="{{ asset('asset/img/sakanato.png') }}" alt="" width="250" height="100">
+        <img class="imageLogoSize" src="{{ asset('asset/img/ind3.png') }}" alt="" width="180" height="175">
         <h1 class="h3 mb-3 font-weight-normal">Login {{ config("app.name")}}</h1>
 
         <label for="inputEmail" class="sr-only">Email address</label>

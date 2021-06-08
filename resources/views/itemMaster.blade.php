@@ -26,11 +26,13 @@
     <div class="row">
         <div class="col-md-6">
             <div class="text-left">
-                <img class="imageLogoSize" src="{{ asset('asset/img/sakanato.png') }}" alt="logoHeader">
+                <a href="/itemMaster">
+                    <img class="imageLogoSize" src="{{ asset('asset/img/ind3.png') }}" alt="logoHeader">
+                </a>
             </div>
         </div>
         <div class="col-md-6">
-            <div class="text-right" style="margin-top:30px;">
+            <div class="align-middle text-right" style="padding: 30px;">
                 <h2>Item Master</h2>
             </div>
         </div>

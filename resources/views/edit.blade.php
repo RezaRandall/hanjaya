@@ -24,11 +24,13 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="text-left">
-                    <h2>Hanjaya</h2>
+                    <a href="/itemMaster">
+                        <img class="imageLogoSize" src="{{ asset('asset/img/ind3.png') }}" alt="logoHeader">
+                    </a>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="text-right">
+                <div class="align-middle text-right" style="padding: 30px;">
                     <h2>Edit Item Master</h2>
                 </div>
             </div>
