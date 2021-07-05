@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 // call order_item_master_model
 Use App\Models\Order_item_master_model;
-use PDF;
+// use PDF;
 
 class OrderProcessController extends Controller
 {
@@ -31,8 +31,7 @@ class OrderProcessController extends Controller
     }
 
     public function storeOrder(Request $request){
-    // Explode the ID and Name and put them in array respectively.
-    $extracted = explode(":", $request -> itemIdSelected);
+    $extracted = explode(":", $request -> itemIdSelected); // Explode the ID and Name and put them in array respectively.
     $totalPriceToInt = explode("Rp. ", $request -> totalPrice);
 
     $cbxAgen = $request -> chkAgen;
@@ -40,18 +39,14 @@ class OrderProcessController extends Controller
     $cbxEceran = $request -> chkEceran;
     $catchPrcItem = '';
 
-
     if($cbxAgen == 'on'){
         $prAgen = explode("Rp. ", $request -> prcAgen );
-        // return $catchPrcItem = $prAgen[1];
         $catchPrcItem = $prAgen[1];
     }else if ($cbxPenyalur == 'on'){
         $prPenyalur = explode("Rp. ", $request -> prcPenyalur );
-        // return $catchPrcItem $prPenyalur[1];
         $catchPrcItem = $prPenyalur[1];
     }else if($cbxEceran == 'on'){
         $prEceran = explode("Rp. ", $request -> prcEceran );
-        // return $catchPrcItem = $prEceran[1];
         $catchPrcItem = $prEceran[1];
     }
             DB::table('order_item_master_model')->insert([
@@ -69,5 +64,11 @@ class OrderProcessController extends Controller
         ]);
         return redirect('orderProcess');
     }
+
+    // public function storeOrder(Request $req){
+    //     $arrItem = array();
+    //     $arrItem = explode(':', $req -> arrItem);
+    //     return redirect('orderProcess');
+    // }
 
 }// Controller Close

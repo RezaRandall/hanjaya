@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ItemMasterController;
 use App\Http\Controllers\OrderProcessController;
 use App\Http\Controllers\ListOrderController;
+use App\Http\Controllers\ChartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,5 +61,10 @@ Route::group(['middleware' => 'auth'], function()
     Route::get('listOrderItem', [ListOrderController::class, 'getListItemMaster'])->name('getListItemMaster');
     // Retrieve all data order
     Route::get('listOrderItem', [ListOrderController::class, 'getAllListOrder'])->name('getAllListOrder');
+    // Retrieve all data chart
+    // Route::get('/listOrderItem', [ChartController::class, 'graphCharts']);
+
+    // Route::get('listOrderItem', [ListOrderController::class, 'getGraphChart']);
+
 
 });

@@ -184,7 +184,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="text-right">
-                <a href="/orderProcess" class="btn btn-sm btn-primary" type=button >Order</a>
+                <a href="/orderProcess" class="btn btn-sm btn-primary" type=button >Make Order</a>
             </div>
         </div>
     </div>

@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+// use Illuminate\Support\Facades\Validator;
 use Validator;
 use Hash;
 use Session;
@@ -22,11 +23,41 @@ class AuthController extends Controller
 
     public function postLogin(Request $request)
     {
-        $credential = $request->only('email', 'password');
-        Auth::attempt($credential);
-        if(Auth::check())
-        {
-            return redirect()->route('itemMaster');
+        // $credential = $request->only('email', 'password');
+        // Auth::attempt($credential);
+        // if(Auth::check())
+        // {
+        //     return redirect()->route('itemMaster');
+        // }
+
+        //Error messages
+        $messages = [
+            "email.required" => "Email is required",
+            "email.email" => "Email is not valid",
+            "email.exists" => "Email doesn't exists",
+            "password.required" => "Password is required",
+            "password.min" => "Password must be at least 6 characters"
+        ];
+
+        // validate the form data
+        $validator = Validator::make($request->all(), [
+                'email' => 'required|email|exists:users,email',
+                'password' => 'required|min:6'
+            ], $messages);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        } else {
+            // attempt to log
+            if (Auth::attempt(['email' => $request->email, 'password' => $request->password ], $request->remember)) {
+                // if successful -> redirect forward
+                return redirect()->intended(route('itemMaster'));
+            }
+
+            // if unsuccessful -> redirect back
+            return redirect()->back()->withInput($request->only('email', 'remember'))->withErrors([
+                'password' => 'Wrong password or this account not approved yet.',
+            ]);
         }
     }
 

@@ -18,6 +18,10 @@
     <!-- external js -->
     <script type="text/javascript" src="{{ asset('asset/js/common.js')}}"></script>
 
+    <!-- remove appending item -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
     <title>Order Process</title>
 </head>
 <body>
@@ -143,15 +147,44 @@
                 </thead>
             </table>
         </div>
-    </div>
-    <br/>
+    </div><br/>
+
+    <!-- Button add order to basket  -->
+    <!-- <div class="row">
+        <div class="col-lg-12">
+            <div class="text-right">
+                <input class="btn btn-success addToBasket" value="Add Order">
+            </div>
+        </div>
+    </div><br/> -->
+    <!--  End Button add order to basket  -->
+
+    <!-- Panel Container Order Basket  -->
+    <!-- <div class="panel table-responsive">
+        <table id="orderBasketAttributes" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="tbHeader">Item Name</th>
+                    <th class="tbHeader">Qty</th>
+                    <th class="tbHeader">UOM</th>
+                    <th class="tbHeader">Price</th>
+                    <th class="tbHeader">Total</th>
+                    <th class="tbHeader">Action</th>
+                </tr>
+            </thead>
+        </table>
+    </div> -->
+    <!-- End of Panel Container Order Basket  -->
+
+    <!-- Button Add Submit Order  -->
     <div class="row">
         <div class="col-lg-12">
             <div class="text-right">
-                <input type="submit" class="btn btn-success" value="Confirm Order">
+                <input type="submit" class="btn btn-sm btn-primary" value="Confirm Order">
             </div>
         </div>
     </div>
+    <!-- End of Button Add Submit Order  -->
     </form>
 </div>
 </body>
